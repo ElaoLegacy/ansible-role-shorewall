@@ -1,0 +1,4 @@
+#ZONE    INTERFACE    BROADCAST    OPTIONS
+{% for key, value in elao_shorewall_interfaces.iteritems() -%}
+    {{ key }}       {{ value.name }}        {{ value.broadcast }}       {{ value.options }}
+{% endfor %}  

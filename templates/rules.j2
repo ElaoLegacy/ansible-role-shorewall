@@ -1,0 +1,10 @@
+#ACTION          SOURCE                   DEST                        PROTO   DEST        SOURCE     ORIGINAL    RATE
+
+# Permit access to SSH
+SSH/ACCEPT       {{ elao_shorewall_interfaces|first }}                      fw                          -       -            -          -
+
+# Permit access to Proxmox Manager and Console
+ACCEPT           {{ elao_shorewall_interfaces|first }}                      fw                          tcp     443,8006     -          -
+
+# PING Rules
+Ping/ACCEPT      all                      all

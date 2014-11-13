@@ -1,0 +1,9 @@
+#SOURCE    DEST    POLICY     LOG      LIMIT:       CONNLIMIT:
+#                             LEVEL    BURST        MASK
+ 
+ 
+# THE FOLLOWING POLICY MUST BE LAST
+#
+all        all    REJECT      info
+ 
+#LAST LINE -- DO NOT REMOVE

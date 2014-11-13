@@ -1,0 +1,9 @@
+---
+
+- name: packages
+  apt: >
+    name={{ item }}
+    state=latest
+  with_items:
+    - shorewall
+  sudo: yes

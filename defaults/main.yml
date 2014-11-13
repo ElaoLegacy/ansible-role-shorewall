@@ -1,0 +1,7 @@
+---
+
+elao_shorewall_interfaces:
+    net: 
+        name:       "{{ ansible_default_ipv4.interface }}"
+        broadcast:  "detect"
+        options:    "blacklist,routeback,bridge,nosmurfs"

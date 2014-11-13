@@ -1,0 +1,7 @@
+---
+
+- name: shorewall restart
+  service: >
+    name=shorewall
+    state=restarted
+  sudo: yes
