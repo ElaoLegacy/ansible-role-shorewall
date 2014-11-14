@@ -1,4 +1,6 @@
 #ZONE   TYPE            OPTIONS         IN                      OUT
 #                                       OPTIONS                 OPTIONS
 fw      firewall
-{{ elao_shorewall_interfaces|first }}      ipv4
+{% for key, value in elao_shorewall_interfaces.iteritems() -%}
+    {{ key }}       {{ value.type }}
+{% endfor %}

@@ -19,3 +19,11 @@
   notify:
     - shorewall restart
   sudo: yes
+
+- name: config zones
+  template: >
+    src=zones.j2
+    dest=/etc/shorewall/zones
+  notify:
+    - shorewall restart
+  sudo: yes
