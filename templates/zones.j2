@@ -1,6 +1,6 @@
 #ZONE   TYPE            OPTIONS         IN                      OUT
 #                                       OPTIONS                 OPTIONS
 fw      firewall
-{% for key, value in elao_shorewall_interfaces.iteritems() -%}
-    {{ key }}       {{ value.type }}
+{% for key, interface in elao_shorewall.interfaces.iteritems() -%}
+    {{ key}}        {{ interface.type }}
 {% endfor %}

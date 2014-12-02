@@ -4,6 +4,6 @@
  
 # THE FOLLOWING POLICY MUST BE LAST
 #
-all        all    REJECT      info
+#all        all    REJECT      info
  
 #LAST LINE -- DO NOT REMOVE

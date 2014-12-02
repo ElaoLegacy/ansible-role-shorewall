@@ -1,29 +1,33 @@
 ---
 
-- name: copy config files 
-  copy: >
-    src=policy dest=/etc/shorewall/policy owner=root group=root mode=0644
+- name: Checking if rules file exists
+  stat: path=/etc/shorewall/rules
+  register: rulefile
 
-- name: config interfaces
-  template: >
-    src=interfaces.j2
-    dest=/etc/shorewall/interfaces
-  notify:
-    - shorewall restart
+- name: Required files 
+  copy: >
+    src={{ item }} dest=/etc/shorewall/{{ item }} owner=root group=root mode=0644
+  with_items:
+    - policy
+    - masq
+    - params
+  when: rulefile.stat.exists is defined and not rulefile.stat.exists
   sudo: yes
 
-- name: config rules
+- name: Interfaces configuration
+  template: >
+    src={{ item }}.j2
+    dest=/etc/shorewall/{{ item }}
+  with_items:
+    - interfaces
+    - zones
+  sudo: yes
+
+- name: Rules configuration file
   template: >
     src=rules.j2
     dest=/etc/shorewall/rules
-  notify:
-    - shorewall restart
-  sudo: yes
-
-- name: config zones
-  template: >
-    src=zones.j2
-    dest=/etc/shorewall/zones
+  when: rulefile.stat.exists is defined and not rulefile.stat.exists
   notify:
     - shorewall restart
   sudo: yes

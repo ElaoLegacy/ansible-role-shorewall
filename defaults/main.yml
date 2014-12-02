@@ -1,7 +1,20 @@
 ---
 
-elao_shorewall_interfaces:
-    net: 
-        name:       "{{ ansible_default_ipv4.interface }}"
-        broadcast:  "detect"
-        options:    "blacklist,routeback,bridge,nosmurfs"
+elao_shorewall:
+    interfaces:
+        net:            # First interface need to be the public interface for rules bootstrap file
+            name:       vmbr0
+            type:       ipv4
+            broadcast:  detect
+            options:    "blacklist,routeback,bridge,nosmurfs"
+        dmz:
+            name:       venet0
+            type:       ipv4
+            broadcast:  detect
+            options:    routeback
+        vrack:
+            name:       vmbr1
+            type:       ipv4
+            broadcast:  detect
+            options:    "blacklist,routeback,bridge,nosmurfs"
+    params: ~

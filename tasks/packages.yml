@@ -1,6 +1,6 @@
 ---
 
-- name: packages
+- name: Installing packages
   apt: >
     name={{ item }}
     state=latest
